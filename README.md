@@ -6,7 +6,14 @@ https://github.com/user-attachments/assets/1987799e-cd9d-4975-bf2d-db59a20a4e42
 
 ## Hardware
 
-Tested on the **Adafruit Feather TFT ESP32-S3** (built-in 240×280 ST7789). The pin definitions in `src/main.cpp` match that board:
+Tested on two boards:
+
+| Board | PlatformIO env | Notes |
+|---|---|---|
+| **Adafruit Feather TFT ESP32-S3** | *(default)* | Built-in 240×280 ST7789; uses Adafruit GFX |
+| **Waveshare ESP32-S3-LCD** | `waveshare_esp32_s3_lcd` | 240×280 ST7789; uses TFT_eSPI build flags |
+
+Default pin definitions in `src/main.cpp` (Adafruit Feather):
 
 | Signal | Pin |
 |--------|-----|
@@ -26,7 +33,12 @@ This project uses **PlatformIO**. The `platformio.ini` targets an ESP32-S3 at 24
 2. Clone the repo and open it in VS Code (PlatformIO detects `platformio.ini` automatically), or use the CLI:
 
 ```bash
+# Default (Adafruit Feather TFT ESP32-S3)
 pio run --target upload
+
+# Waveshare ESP32-S3-LCD
+pio run -e waveshare_esp32_s3_lcd --target upload
+
 pio device monitor --baud 115200
 ```
 
